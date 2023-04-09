@@ -16,5 +16,5 @@
     "target": "es6"
   },
   "include": ["src/**/*"],
-  "exclude": ["src/test/*", "src/__linkdb_tests__/*.ts"]
+  "exclude": ["src/test/*"]
 }
