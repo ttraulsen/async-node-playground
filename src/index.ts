@@ -3,7 +3,7 @@ import express from 'express';
 import { logger } from './core/logger';
 import { errorHandler } from './middleware/postErrorHandler';
 import addCorrelationIdMiddleWare from './middleware/addCorrelationId';
-import { defaultAxios } from './core/defaultAxios';
+import { defaultAxiosInstance } from './core/defaultAxiosInstance';
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -23,7 +23,7 @@ app.get(
   '/other-endpoint',
   async (req: express.Request, res: express.Response) => {
     logger.info('received request on other-endpoint');
-    await defaultAxios.get('http://localhost:3000/endpoint', {
+    await defaultAxiosInstance.get('http://localhost:3000/endpoint', {
       data: req.body,
     });
     res.status(200).json(req.body);

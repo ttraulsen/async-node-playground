@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { asyncLocalStorage } from '../middleware/addCorrelationId';
 
-export const defaultAxios = axios.create();
+export const defaultAxiosInstance = axios.create();
 
-defaultAxios.interceptors.request.use(
+defaultAxiosInstance.interceptors.request.use(
   (config) => {
     const store = asyncLocalStorage.getStore();
     if (store) config.headers['x-correlation-id'] = store;
